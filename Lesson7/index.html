@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Html Forms</title>
+</head>
+
+<body>
+    <h1>Forms in Html</h1>
+    <form action="my_server" method="POST" target="_self">
+        <fieldset>
+            <legend>Data Person</legend>
+            <label for="name">Name:</label><br />
+            <input type="text" id="name" name="name" placeholder="write your name" required="true" /><br />
+
+            <label for="lastname">Last name:</label><br />
+            <input type="text" id="Lastname" name="lastname" placeholder="write your lastname" required="true" /><br />
+
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" /><br />
+
+            <label for="age">Age:</label><br />
+            <input type="number" id="age" name="age" /><br />
+
+            <label>Genre</label><br />
+            <input type="radio" id="female" name="genre" value="female" />
+            <label for="female">female</label><br />
+            <input type="radio" id="male" name="genre" value="male" />
+            <label for="male">male</label><br />
+
+            <label>Favorite Music</label><br />
+            <input type="checkbox" id="classic" name="music" value="classic" />
+            <label for="classic">Classic</label><br />
+            <input type="checkbox" id="jazz" name="music" value="jazz" />
+            <label for="jazz">Jazz</label><br />
+
+            <label for="cars">Favorite Cars</label>
+            <select id="cars" name="cars">
+                <option value="volvo">Volvo</option>
+                <option value="bmw" selected="true">BMW</option>
+                <option value="audi">Audi</option>
+                <br />
+            </select><br />
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="2" cols="30">
+this is my comments
+        </textarea><br />
+
+            <br />
+            <input type="submit" value="Send"/>
+            <input type="reset" value="Reset"/>
+        </fieldset>
+    </form>
+</body>
+
+</html>
