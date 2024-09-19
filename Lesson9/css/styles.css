@@ -1,5 +1,19 @@
+#title{
+    color: rgb(224, 50, 85);
+    text-align: center;
+}
+
+
 h1 {
     color: aqua;
     text-align: center;
     font-size: 100px;
+}
+
+.center_text{
+    text-align: center;
+}
+
+.big-text{
+    font-size: 20px;;
 }
