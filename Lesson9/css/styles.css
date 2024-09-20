@@ -1,10 +1,17 @@
+*{
+    background-color: gold;
+    color: cornflowerblue;
+}
+
+
+
 #title{
     color: rgb(224, 50, 85);
     text-align: center;
 }
 
 
-h1 {
+h1, h2, p{
     color: aqua;
     text-align: center;
     font-size: 100px;
