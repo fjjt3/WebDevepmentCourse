@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+.rojo{
+    border: 1px solid firebrick;
+
+}
+.rosa{
+    border: 10px dashed hotpink
+}
+/*.my-red{
+    background-color: red;
+}
+.rosa{
+    background-color: hotpink;
+}
+.my-red, .rosa{
+    color: white;
+}*/
