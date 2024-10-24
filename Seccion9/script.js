@@ -18,7 +18,7 @@ const c = arr[2];
 
 const [x ,y, z] = arr;
 
-// distructuring an array
+// destructuring an array
 console.log(x , y, z);
 console.log(a, b, c);
 console.log(arr);
