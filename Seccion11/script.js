@@ -341,7 +341,7 @@ console.log(max);
 
 // const dogAdultsAge =  data1.map()(dogAge) => dogAge > ? (humanAge = 16 + dogAge *4) : (humanAge 2 * dogAge)
 
-const calcAverageHumanAge = function (ages) {
+const calcAverageHumanAge2 = function (ages) {
   const humanAges = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
   const adults = humanAges.filter((age) => age >= 18);
   console.log(humanAges);
@@ -351,6 +351,13 @@ const calcAverageHumanAge = function (ages) {
 
   return average;
 };
+
+const calcAverageHumanAge = ages => 
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
 
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 console.log(avg1);
