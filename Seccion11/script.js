@@ -119,6 +119,19 @@ createUsernames(accounts);
 
 // console.log(createUsernames("Steven Thomas Williams"));
 
+// Event handler
+let currentAccount;
+
+btnLogin.addEventListener("click", function (e) {
+  // Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    (acc) => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -352,14 +365,12 @@ const calcAverageHumanAge2 = function (ages) {
   return average;
 };
 
-const calcAverageHumanAge = ages => 
+const calcAverageHumanAge = (ages) =>
   ages
-    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
-    .filter(age => age >= 18)
+    .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter((age) => age >= 18)
     .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
-    33
-
-
+33;
 
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 console.log(avg1);
@@ -373,9 +384,62 @@ console.log(totalDepositsUSD);
 
 // find method
 
-const firstWithdrawal = movements.find(mov => mov < 0);
+const firstWithdrawal = movements.find((mov) => mov < 0);
 console.log(firstWithdrawal);
 
 console.log(accounts);
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+const account = accounts.find((acc) => acc.owner === "Jessica Davis");
 console.log(account);
+
+// findIndex -> return the index, instead of object
+
+// some and every
+
+// Equality
+console.log(movements.includes(-130));
+
+// Some: Condition
+const anyDeposits = movements.some((mov) => mov > 0);
+console.log(anyDeposits);
+
+// Every, every items shuld pass the condition
+console.log(movements.every((mov) => mov > 0));
+
+// Seperate callback
+const deposit = (mov) => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+// console.log(filter.some(deposit));
+
+// flat and flatMap
+const arr1 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr1.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat());
+console.log(arrDeep.flat(2));
+
+const accountMovements = accounts.map((acc) => acc.movements);
+console.log(accountMovements);
+
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+// flat
+const overallBalance2 = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
+//flatMap
+
+const overallBalance3 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance3);
+
+
