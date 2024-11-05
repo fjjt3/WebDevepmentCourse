@@ -67,9 +67,8 @@ const displayMovements = function (movements) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `
         <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+          <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
           <div class="movements__value">${mov}</div>
         </div>`;
 
@@ -208,7 +207,7 @@ myMovements.forEach(function (mov, i, arr) {
   if (mov > 0) {
     console.log(`Movement ${i + 1}: You deposited ${mov}`);
   } else {
-    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+    console.log(`Movement ${i + 1}: You withdraw ${Math.abs(mov)}`);
   }
 });
 // 0: function(200)
@@ -402,7 +401,7 @@ console.log(movements.includes(-130));
 const anyDeposits = movements.some((mov) => mov > 0);
 console.log(anyDeposits);
 
-// Every, every items shuld pass the condition
+// Every, every items should pass the condition
 console.log(movements.every((mov) => mov > 0));
 
 // Seperate callback
@@ -443,7 +442,7 @@ const overallBalance3 = accounts
 console.log(overallBalance3);
 
 // Sorting Arrays
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha']
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
 console.log(owners.sort());
 console.log(owners);
 // sort mitate the arry take care of that, exaple in array of numbers
@@ -454,25 +453,79 @@ console.log(movements);
 // return > 0 , B, A ( switch order)
 
 // Ascending
-movements.sort((a, b)=> {
+movements.sort((a, b) => {
   if (a > b) return 1;
   if (a < b) return -1;
 });
 
 console.log(movements);
-movements.sort((a,b) => a - b);
+movements.sort((a, b) => a - b);
 console.log(movements);
 
-// Descending 
-movements.sort((a, b)=> {
+// Descending
+movements.sort((a, b) => {
   if (a > b) return -1;
   if (a < b) return 1;
 });
 
 console.log(movements);
 
-movements.sort((a,b) => b - a);
+movements.sort((a, b) => b - a);
 console.log(movements);
 
+// Filling arrays
 
+const arr3 = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+// console.log(x.map(() => 5));
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+// Array Methods Practice
+
+// 1.
+// const bankDepositSum = accounts.map(acc => acc.movements).flat();
+const bankDepositSum = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((mov) => mov > 0)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(bankDepositSum);
+
+//2. How many deposits are in ther bank with at least 1000 $
+const numDeposit1000 = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((mov) => mov >= 1000).length;
+console.log(numDeposit1000);
+
+const numDeposit1000V1 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposit1000V1);
+
+//3 object with the sum and withdrawals
+const sums = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((sums, cur) => {
+    cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+    return sums;
+  }, { deposits: 0, withdrawals: 0 });
+
+  console.log(sums);  
+
+ 
 
