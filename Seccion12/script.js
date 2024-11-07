@@ -81,19 +81,26 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort ? acc.movements.slice().sort((a, b) => a - b) : movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    new date(acc.movementsDates[i]);
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() +1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const displayDate =`${day}/${month}/${year}`;
 
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+      <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -154,6 +161,19 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
+
+// FAKE ALWAYS LOGGED IN
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() +1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+labelDate.textContent =`${day}/${month}/${year}, ${hour}:${min}`;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -409,8 +429,8 @@ console.log(10 / 3);
 
 // Create a date
 
-const now = new Date();
-console.log(now);
+const nowCreatingDate = new Date();
+console.log(nowCreatingDate);
 
 console.log(new Date('Aug 02 2020 18:05:41'));
 console.log(new Date('December 24, 2015'));
@@ -444,5 +464,14 @@ future.setFullYear(2040);
 console.log(future);
 
 
+///////////////////////////////////////
+// Operations With Dates
+const my_future = new Date(2037, 10, 19, 15, 23);
+console.log(+my_future);
 
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
+console.log(days1);
 
